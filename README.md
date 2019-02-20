@@ -1,2 +1,3 @@
-# jagaraga
-Workout App. base on React Native
+# Jagaraga
+> Workout App. base on React Native Framework
+- `yarn install`
