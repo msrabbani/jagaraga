@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient'
 export const Welcome = (props) => (
     <LinearGradient 
         colors={['#ef456a', '#1e1e1e']}
-        style={{flex: 5}}>
+        style={{flex: 1}}>
 
     <View style={styles.titleContainer}>
       <Text style={styles.title}>Jagaraga</Text>
@@ -16,10 +16,11 @@ export const Welcome = (props) => (
       <Text style={styles.logTitle}>Log your Fitness</Text>
     </View>
 
-    <View style={{padding: 100}}>
+    <View style={{padding: 50}}>
         <Button
             onPress={props.StartWorkout}
             style={styles.button}
+            textStyle={styles.buttonText}
             children={'Start Workout'}
         />
     </View>
@@ -38,23 +39,26 @@ const styles = StyleSheet.create({
     flex: 0.2,
   },
   title: {
-    fontSize: 45,
+    fontSize: 35,
     fontWeight: '400',
-    color: 'blue',
+    color: '#F3F3F3',
     textAlign: 'center',
   },
   logContainer: {
-    flex: 0.3,
+      flex: 0.3,
+      alignItems:'center'
   },
   logTitle: {
     fontSize: 30,
     fontWeight: '100',
-    color: 'silver',
+    color: '#F3F3F3',
   },
   button: {
     borderColor: '#EADCDC',
-    backgroundColor: 'grey',
-    padding: 20,
-    alignItems: 'center',
+      padding: 10,
+      borderRadius: 10
   },
+    buttonText: {
+        color: '#EADCDC'
+    }
 });
