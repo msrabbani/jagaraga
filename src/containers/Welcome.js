@@ -1,9 +1,12 @@
 import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import Button from 'apsl-react-native-button'
+import LinearGradient from 'react-native-linear-gradient'
 
 export const Welcome = (props) => (
-  <View style={{flex: 5}}>
+    <LinearGradient 
+        colors={['#ef456a', '#1e1e1e']}
+        style={{flex: 5}}>
 
     <View style={styles.titleContainer}>
       <Text style={styles.title}>Jagaraga</Text>
@@ -21,7 +24,7 @@ export const Welcome = (props) => (
         />
     </View>
 
-  </View>
+</LinearGradient>
 );
 
 const styles = StyleSheet.create({
