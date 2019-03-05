@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import TabView from 'react-native-scrollable-tab-view';
 import LinearGradient from 'react-native-linear-gradient'
+import { CurrentWorkout } from '../ui/CurrentWorkout'
 
 export class Main extends Component {
   render() {
@@ -13,7 +14,7 @@ export class Main extends Component {
           tabBarTextStyle={{fontSize: 30}}
           tabBarPosition="overlayBottom"
       >
-          <Text tabLabel="halo">halo</Text>
+          <CurrentWorkout tabLabel="+"/>
           <Text tabLabel="uhuy">uhuy</Text>
         </TabView>
       </LinearGradient>
