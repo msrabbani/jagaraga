@@ -7,8 +7,6 @@ export const CurrentWorkout = () => (
     <Topbar style={styles.topbar}>
         <Text style={styles.textbar}>Current Workout</Text>
     </Topbar>
-
-    <Text>Current Workout...</Text>
     </View>
 )
 
