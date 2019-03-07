@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 import Button from 'apsl-react-native-button';
-import Topbar from './ui/Topbar'
+import {Topbar} from '../ui/Topbar'
+import {WorkoutList} from '../ui/WorkoutList'
 
 export class Container extends Component {
     render() {
@@ -16,12 +17,12 @@ export class Container extends Component {
             <Text style={styles.topbarText}>
               Current Workout
             </Text>
-          </Topbar>
+        </Topbar>
+
           <View style={styles.currentWorkout}>
+              <WorkoutList/>
           </View>
         </LinearGradient>
-        <ExerciseModal
-        />
       </View>
         )
     }
