@@ -1,7 +1,7 @@
-import { exercises } from './exercises';
-import { ui } from './ui';
-import { currentWorkout } from './currentWorkout';
 import { combineReducers } from 'redux';
+import { ui } from './ui';
+import { exercises } from './exercises';
+import { currentWorkout } from './currentWorkout';
 
 export default combineReducers({
   exercises,

@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, Text, Modal} from 'react-native'
+import Button from 'apsl-react-native-button'
 
 export const ExerciseModal = (props) => (
     <Modal
@@ -9,7 +10,11 @@ export const ExerciseModal = (props) => (
         onRequestClose={props.closeModal}
     >
         <View>
-            <Text>ieu Modal lain Modol</Text>
+            <Text>Ini Modal!</Text>
+            <Button 
+                onPress={props.closeModal}
+                children={'close'}
+            />
         </View>
     </Modal>
 )
