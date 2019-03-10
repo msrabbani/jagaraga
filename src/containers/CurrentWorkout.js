@@ -1,50 +1,77 @@
-import React, {Component} from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {View, Text, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Button from 'apsl-react-native-button';
-import Topbar from './ui/Topbar'
+import {Topbar} from '../ui/Topbar';
+import {WorkoutList} from '../ui/WorkoutList';
+import {setExerciseModalVisibility} from '../actions/actions';
+import {ExerciseModal} from '../ui/ExerciseModal'
 
-export class Container extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
+const mapStateToProps = (state) => ({
+    currentWorkout: state.currentWorkout,
+    exerciseModal: state.ui.exerciseModal
+});
+
+const mapActionsToProps = (dispatch) => ({
+  setModalVisibility(visible) {
+    return dispatch(setExerciseModalVisibility(visible));
+  },
+});
+
+class _CurrentWorkout extends Component {
+  static defaultProps = {
+    currentWorkout: [],
+  };
+  render() {
+    return (
+      <View style={styles.container}>
         <LinearGradient
           colors={['#52EDC7', '#5AC8FB']}
-          style={styles.container}
-        >
+          style={styles.container}>
+
           <Topbar style={styles.topbar}>
             <Text style={styles.topbarText}>
               Current Workout
             </Text>
           </Topbar>
           <View style={styles.currentWorkout}>
+              <WorkoutList 
+                  setModalVisibility={this.props.setModalVisibility}
+                  currentWorkout={this.props.currentWorkout}
+              />
           </View>
         </LinearGradient>
         <ExerciseModal
-        />
+              visible={this.props.exerciseModal}
+              closeModal={() => this.props.setModalVisibility(false)}
+          />
       </View>
-        )
-    }
+    );
+  }
 }
 
+
 const styles = StyleSheet.create({
-    container: {
-    flex: 1
+  container: {
+    flex: 1,
   },
   topbar: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
     borderBottomColor: 'white',
-    borderBottomWidth: 2
+    borderBottomWidth: 2,
   },
   topbarText: {
-    color: '#AB88E7',
-    fontSize: 26
+    color: 'white',
+    fontSize: 26,
   },
   currentWorkout: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
+    alignItems: 'center',
+  },
+});
+
+export const CurrentWorkout = connect(mapStateToProps, mapActionsToProps)(_CurrentWorkout);

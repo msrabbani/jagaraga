@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import TabView from 'react-native-scrollable-tab-view';
 import LinearGradient from 'react-native-linear-gradient'
-import { CurrentWorkout } from '../ui/CurrentWorkout'
+import {CurrentWorkout} from './CurrentWorkout'
 
 export class Main extends Component {
   render() {
