@@ -5,7 +5,7 @@ export class ExerciseList extends Component {
   static defaultProps = {
     exercises: [],
   };
-  constructor() {
+  constructor(props) {
     super();
     const ds = new ListView.DataSource({rowHasChange: (r1, r2 => r1 !== r2)});
     this.state = {

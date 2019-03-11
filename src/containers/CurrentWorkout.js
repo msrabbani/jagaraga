@@ -10,7 +10,8 @@ import {ExerciseModal} from '../ui/ExerciseModal'
 
 const mapStateToProps = (state) => ({
     currentWorkout: state.currentWorkout,
-    exerciseModal: state.ui.exerciseModal
+    exerciseModal: state.ui.exerciseModal,
+    exercises: state.exercises
 });
 
 const mapActionsToProps = (dispatch) => ({
@@ -22,6 +23,7 @@ const mapActionsToProps = (dispatch) => ({
 class _CurrentWorkout extends Component {
   static defaultProps = {
     currentWorkout: [],
+    exercises:[]
   };
   render() {
     return (
@@ -43,6 +45,7 @@ class _CurrentWorkout extends Component {
           </View>
         </LinearGradient>
         <ExerciseModal
+              exercises={this.props.exercises}
               visible={this.props.exerciseModal}
               closeModal={() => this.props.setModalVisibility(false)}
           />

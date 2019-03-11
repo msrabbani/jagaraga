@@ -5,12 +5,24 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Topbar} from './Topbar';
 import {SearchBar} from './SearchBar'
 import {ExerciseList} from './ExerciseList'
+import {fuzzySearch} from '../services/fuzzy'
 
 export class ExerciseModal extends Component {
     constructor(props){
         super()
+        this.state = {
+            foundExercises:[]
+        }
     }
-  handleTextChange = (text) => {};
+
+    handleTextChange = (text) => {
+        this.setState({
+            foundExercises:fuzzySearch(text, this.props.exercises, "name")
+        })
+
+
+    };
+
   render() {
     return (
       <Modal
@@ -28,7 +40,9 @@ export class ExerciseModal extends Component {
               <SearchBar onTextChange={this.handleTextChange} />
             </LinearGradient>
           </Topbar>
-          <ExerciseList/>
+          <ExerciseList
+              exercises={this.state.foundExercises}
+          />
         </View>
       </Modal>
     );
