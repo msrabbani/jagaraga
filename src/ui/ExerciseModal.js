@@ -1,20 +1,36 @@
-import React from 'react'
-import {View, Text, Modal} from 'react-native'
-import Button from 'apsl-react-native-button'
+import React, {Component} from 'react';
+import {View, Text, Modal} from 'react-native';
+import Button from 'apsl-react-native-button';
+import LinearGradient from 'react-native-linear-gradient';
+import {Topbar} from './Topbar';
+import {SearchBar} from './SearchBar'
+import {ExerciseList} from './ExerciseList'
 
-export const ExerciseModal = (props) => (
-    <Modal
-        style={{flex:1}}
+export class ExerciseModal extends Component {
+    constructor(props){
+        super()
+    }
+  handleTextChange = (text) => {};
+  render() {
+    return (
+      <Modal
+        style={{flex: 1}}
         animationType={'slide'}
         visible={props.visible}
-        onRequestClose={props.closeModal}
-    >
+        onRequestClose={props.closeModal}>
         <View>
-            <Text>Ini Modal!</Text>
-            <Button 
-                onPress={props.closeModal}
-                children={'close'}
-            />
+          <Topbar>
+            <LinearGradient
+              colors={['#87fc70', '#0bd318']}
+              start={[0.0, 0.5]}
+              end={[1.0, 0.5]}
+              locations={[0.0, 1.0]}>
+              <SearchBar onTextChange={this.handleTextChange} />
+            </LinearGradient>
+          </Topbar>
+          <ExerciseList/>
         </View>
-    </Modal>
-)
+      </Modal>
+    );
+  }
+}
