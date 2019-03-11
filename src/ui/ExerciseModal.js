@@ -1,6 +1,9 @@
 import React from 'react'
 import {View, Text, Modal} from 'react-native'
 import Button from 'apsl-react-native-button'
+import LinearGradient from 'react-native-linear-gradient';
+import { Topbar } from './Topbar'
+import { SearchBar } from './SearchBar'
 
 export const ExerciseModal = (props) => (
     <Modal
@@ -10,11 +13,16 @@ export const ExerciseModal = (props) => (
         onRequestClose={props.closeModal}
     >
         <View>
-            <Text>Ini Modal!</Text>
-            <Button 
-                onPress={props.closeModal}
-                children={'close'}
-            />
+            <Topbar>
+                <LinearGradient
+                    colors={['#87fc70','#0bd318']}
+                    start={[0.0, 0.5]}
+                    end={[1.0, 0.5]}
+                    locations={[0.0, 1.0]}
+                >
+                    <SearchBar/>
+                </LinearGradient>
+            </Topbar>
         </View>
     </Modal>
 )
