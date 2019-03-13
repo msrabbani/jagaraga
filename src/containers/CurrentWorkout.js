@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Button from 'apsl-react-native-button';
 import {Topbar} from '../ui/Topbar';
 import {WorkoutList} from '../ui/WorkoutList';
-import {setExerciseModalVisibility} from '../actions/actions';
+import {setExerciseModalVisibility, addExercise} from '../actions/actions';
 import {ExerciseModal} from '../ui/ExerciseModal'
 
 const mapStateToProps = (state) => ({
@@ -18,6 +18,9 @@ const mapActionsToProps = (dispatch) => ({
   setModalVisibility(visible) {
     return dispatch(setExerciseModalVisibility(visible));
   },
+  addExercise(exercise) {
+    return dispatch(addExercise(exercise))
+  }
 });
 
 class _CurrentWorkout extends Component {
@@ -46,6 +49,7 @@ class _CurrentWorkout extends Component {
         </LinearGradient>
         <ExerciseModal
               exercises={this.props.exercises}
+              addExercise={this.props.addExercise}
               visible={this.props.exerciseModal}
               closeModal={() => this.props.setModalVisibility(false)}
           />

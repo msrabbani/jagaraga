@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import  {Welcome} from './containers/Welcome'
-import  {Main} from './containers/Main'
+import {Welcome} from './containers/Welcome'
+import {Main} from './containers/Main'
 import {Provider} from 'react-redux'
 import {store} from './store'
 
- export class Root extends Component {
+export default class Root extends Component <{}> {
   constructor() {
     super();
     this.state = {
