@@ -9,7 +9,7 @@ export const ExerciseModal = (props) => (
     visible={props.visible}
     onRequestClose={props.closeModal}
   >
-    <ExerciseList {...props} />
+  <ExerciseList {...props} />
   </Modal>
 );
 
