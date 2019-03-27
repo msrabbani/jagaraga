@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import {Welcome} from './containers/Welcome'
-import {Main} from './containers/Main'
+import {Welcome, Main} from './containers/'
 import {Provider} from 'react-redux'
 import {store} from './store'
 

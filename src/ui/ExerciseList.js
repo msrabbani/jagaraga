@@ -1,51 +1,55 @@
-import React, {Component} from 'react';
-import {View, Text, ListView, StyleSheet} from 'react-native';
-import {LinearGradient} from 'react-native-linear-gradient';
-import {Topbar} from './Topbar';
-import {SearchBar} from './SearchBar';
-import {fuzzySearch} from '../services/fuzzy'
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, ListView } from 'react-native';
+import { fuzzySearch } from '../services/fuzzy';
+import LinearGradient from 'react-native-linear-gradient';
+import { Topbar } from './Topbar';
+import { SearchBar } from './SearchBar';
 import Button from 'apsl-react-native-button';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export class ExerciseList extends Component {
   constructor() {
     super();
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      matchingExercises: ds.cloneWithRows([]),
+      matchingExercises: ds.cloneWithRows([])
     };
   }
+  
+  handlePress(exercise) {
+    this.props.addExercise(exercise);
+    this.props.closeModal();
+  }
+  
+  closeModal = () => {
+    this.setState({matchingExercises: this.state.matchingExercises.cloneWithRows([])});
+    this.props.closeModal();
+  }
 
-    handleSearch = (searchTerm) => {
-        let newState;
-        if(!searchTerm || searchTerm.length < 3) {
-            newState = this.state.matchingExercises.cloneWithRows([])
-        } else {
-            newState = this.state.matchingExercises.cloneWithRows(
-                fuzzySearch(searchTerm, this.props.exercises, 'name')
-            )
-        }
-        this.setState({matchingExercises: newState })
+  handleSearch = (searchTerm) => {
+    let newState;
+    if (!searchTerm || searchTerm.length < 3) {
+      newState = this.state.matchingExercises.cloneWithRows([]);
+    } else {
+      newState = this.state.matchingExercises.cloneWithRows(
+        fuzzySearch(searchTerm, this.props.exercises, 'name')
+      );
     }
-
-    closeModal = () => {
-        this.setState({matchingExercises: this.state.matchingExercises})
-        this.props.closeModal()
-    }
+    this.setState({matchingExercises: newState});
+  }
 
   render() {
     return (
       <View style={{flex: 1, backgroundColor: '#efefef'}}>
-
         <Topbar style={{padding: 0}}>
           <LinearGradient
-            color={['#87fc70', '#0bd318']}
-            start={[0.0, 0.5]}
-            end={[1.0, 0.5]}
+            start={{x:0.0, y:0.5}} end={{x:1.0, y:0.5}}
             locations={[0.0, 1.0]}
-            style={styles.topbar}>
+            colors={['#87FC70', '#0BD318']}
+            style={styles.topbar}
+          >
             <SearchBar
-              placeholder={'search for exercise'}
+              placeholder={'search for exercises'}
               autoFocus
               containerStyle={styles.searchBar}
               style={styles.input}
@@ -56,7 +60,7 @@ export class ExerciseList extends Component {
                 onPress={this.closeModal}
                 textStyle={styles.close}
                 style={styles.closeButton}
-                children={<Icon name="cancel" size={40} />}
+                children={<Icon name="cancel" size={34} />}
               />
             </View>
           </LinearGradient>
@@ -64,14 +68,15 @@ export class ExerciseList extends Component {
         <ListView
           dataSource={this.state.matchingExercises}
           renderRow={exercise => (
-            <View style={styles.row}>
-              <Text style={styles.rowName}>{exercise.name}</Text>
-            </View>
+              <View style={styles.row}>
+                <Text style={styles.rowName}>
+                  {exercise.name}
+                </Text>
+              </View>
           )}
         />
-
       </View>
-    );
+    )
   }
 }
 
@@ -85,32 +90,31 @@ const styles = StyleSheet.create({
     height: 35,
     padding: 5,
     justifyContent: 'center',
-    borderRadius: 20,
+    borderRadius: 20
   },
   topbar: {
     flexDirection: 'row',
     flex: 1,
     padding: 2,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   input: {
     color: 'black',
-    fontSize: 20,
+    fontSize: 20
   },
   close: {
-    fontSize: 34,
+    fontSize: 34
   },
   closeButton: {
-    borderWidth: 0,
+    borderWidth: 0
   },
   row: {
     borderWidth: 1,
-    borderColor: 'grey',
+    borderColor: 'grey'
   },
   rowName: {
-    fontSize: 30,
-  },
-});
-
+    fontSize: 30
+  }
+})
 

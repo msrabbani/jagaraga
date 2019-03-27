@@ -3,10 +3,8 @@ import {connect} from 'react-redux';
 import {View, Text, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Button from 'apsl-react-native-button';
-import {Topbar} from '../ui/Topbar';
-import {WorkoutList} from '../ui/WorkoutList';
+import {Topbar, WorkoutList, ExerciseModal} from '../ui';
 import {setExerciseModalVisibility, addExercise} from '../actions/actions';
-import {ExerciseModal} from '../ui/ExerciseModal'
 
 const mapStateToProps = (state) => ({
     currentWorkout: state.currentWorkout,
@@ -69,6 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderBottomColor: 'white',
     borderBottomWidth: 2,
+    height: 60
   },
   topbarText: {
     color: 'white',
