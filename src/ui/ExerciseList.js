@@ -16,13 +16,8 @@ export class ExerciseList extends Component {
     };
   }
   
-  handlePress(exercise) {
-    this.props.addExercise(exercise);
-    this.props.closeModal();
-  }
-  
   closeModal = () => {
-    this.setState({matchingExercises: this.state.matchingExercises.cloneWithRows([])});
+    this.setState({matchingExercises: this.state.matchingExercises});
     this.props.closeModal();
   }
 
@@ -49,7 +44,7 @@ export class ExerciseList extends Component {
             style={styles.topbar}
           >
             <SearchBar
-              placeholder={'search for exercises'}
+              placeholder={'search for exercise'}
               autoFocus
               containerStyle={styles.searchBar}
               style={styles.input}
@@ -85,12 +80,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flex: 0.9,
     borderColor: 'grey',
-    borderRadius: 1,
+    borderRadius: 0.5,
     borderWidth: 1,
-    height: 35,
-    padding: 5,
+    height: 40,
     justifyContent: 'center',
-    borderRadius: 20
+    borderRadius: 30
   },
   topbar: {
     flexDirection: 'row',
@@ -101,10 +95,10 @@ const styles = StyleSheet.create({
   },
   input: {
     color: 'black',
-    fontSize: 20
+    fontSize: 18
   },
   close: {
-    fontSize: 34
+    fontSize: 30
   },
   closeButton: {
     borderWidth: 0
@@ -114,7 +108,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey'
   },
   rowName: {
-    fontSize: 30
+    fontSize: 25
   }
 })
 
