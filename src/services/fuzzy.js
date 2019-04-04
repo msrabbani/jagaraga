@@ -1,5 +1,5 @@
 export const fuzzySearch =(predicate, terms, prop) => {
-    const wordsToMatch = predicate.trim().toLowerCase().split('')
+    const wordsToMatch = predicate.trim().toLowerCase().split(' ')
 
     return terms.filter(term => {
         const currentTerm = term[prop].toLowerCase()
