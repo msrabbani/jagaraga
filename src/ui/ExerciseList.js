@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ListView } from 'react-native';
+import { Text, View, StyleSheet, ListView, TouchableWithoutFeedback } from 'react-native';
 import { fuzzySearch } from '../services/fuzzy';
 import LinearGradient from 'react-native-linear-gradient';
 import { Topbar } from './Topbar';
@@ -33,6 +33,11 @@ export class ExerciseList extends Component {
     this.setState({matchingExercises: newState});
   }
 
+    handlePress = (exercise) => {
+        this.props.addExercise(exercise)
+        this.props.closeModal()
+    }
+
   render() {
     return (
       <View style={{flex: 1, backgroundColor: '#efefef'}}>
@@ -63,11 +68,13 @@ export class ExerciseList extends Component {
         <ListView
           dataSource={this.state.matchingExercises}
           renderRow={exercise => (
+              <TouchableWithoutFeedback onPress={()=>this.handlePress(exercise)}>
               <View style={styles.row}>
                 <Text style={styles.rowName}>
                   {exercise.name}
                 </Text>
               </View>
+              </TouchableWithoutFeedback>
           )}
         />
       </View>
