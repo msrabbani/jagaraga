@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
   },
   workoutList: {
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
-      // width: width * .80
   },
   workout: {
     borderBottomColor: 'rgba(255, 255, 255, 0.1)',
