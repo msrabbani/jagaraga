@@ -1,7 +1,7 @@
 import { createAsyncCreator } from '../services/asyncCreators';
 import * as api from '../services/api';
 import * as types from './types';
-sa
+
 export const fetchCurrentWorkout = () => (
   createAsyncCreator(
     types.FETCH_CURRENT_WORKOUT,
@@ -9,7 +9,6 @@ export const fetchCurrentWorkout = () => (
     () => api.get('current_workout')
   )
 );
-
 
 export const addExerciseToCurrentWorkout = (exercise) => (
   createAsyncCreator(
