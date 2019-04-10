@@ -1,6 +1,6 @@
 const headers = {
+   Accept: 'application/json',
    'Content-Type': 'application/json',
-   'Accept': 'application/json' 
 }
 
 const checkStatus = (response) => {
@@ -16,13 +16,13 @@ const checkStatus = (response) => {
 const parseJSON = (response) => response.json()
 
 export const get = (path) => (
-    fetch(`http://192.168.1.8:3000/${path}`,{headers})
+    fetch(`http://localhost:3000/${path}`, {headers})
     .then(checkStatus)
     .then(parseJSON)
 )
 
 export const post = (path, data) => (
-    fetch(`http://192.168.1.8:3000/${path}`, {
+    fetch(`http://localhost:3000/${path}`, {
         headers,
         method: 'POST',
         body: JSON.stringify(data)

@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, ListView} from 'react-native';
+import {View, Text, StyleSheet, ListView, Dimensions} from 'react-native';
 import Button from 'apsl-react-native-button';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+const { width } = Dimensions.get('window')
 
 export class WorkoutList extends Component {
   static defaultProps = {
@@ -67,6 +69,7 @@ const styles = StyleSheet.create({
   },
   workoutList: {
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      width: width * .80
   },
   workout: {
     borderBottomColor: 'rgba(255, 255, 255, 0.1)',
