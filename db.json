@@ -1,0 +1,25 @@
+{
+  "current_workout": [
+    {
+      "id": 1
+    },
+    {
+      "name": "dumbbell curl",
+      "category": {
+        "id": 3,
+        "name": "Arms",
+        "type": "Weight Training"
+      },
+      "id": 2
+    },
+    {
+      "name": "dumbbell curl",
+      "category": {
+        "id": 3,
+        "name": "Arms",
+        "type": "Weight Training"
+      },
+      "id": 3
+    }
+  ]
+}
