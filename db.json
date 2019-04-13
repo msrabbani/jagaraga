@@ -1,9 +1,6 @@
 {
   "current_workout": [
     {
-      "id": 1
-    },
-    {
       "name": "dumbbell curl",
       "category": {
         "id": 3,
